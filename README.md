@@ -12,6 +12,7 @@ Flicker App to view the publicly available images
     - Expressjs
     - Express-promise-router
     - Axios
+    - Unit Testing with mocha chai
 
 # Build Process
 - FlickrClient
@@ -20,6 +21,12 @@ Flicker App to view the publicly available images
 - FlickrServer
     - npm run dev
     - npm run server
+
+# Unit Testing
+- FlickrClient
+    - 
+- FlickrServer
+    - npm run test
 
 # Deployment Process
 - Docker Setup
