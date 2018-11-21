@@ -17,11 +17,11 @@ describe("index()", () => {
 });
 
 // Call all public available images
-describe("getFlickrImage()", () => {
-    it("return images", () => {
-      const tagName = "flowers";
-      getFlickrImage(tagName).then(()=>{
-        assert.equal(data, 10);
-      });
-    });
-  });
+// describe("getFlickrImage()", () => {
+//     it("return images", () => {
+//       const tagName = "flowers";
+//       getFlickrImage(tagName).then(()=>{
+//         assert.equal(data, 10);
+//       });
+//     });
+//   });

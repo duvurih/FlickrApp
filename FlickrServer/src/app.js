@@ -50,6 +50,12 @@ app.use(function(req, res, next) {
 app.use("/flickrs", flickrRoutes);
 
 // exception handling
+process.on('unhandledRejection', function(reason, promise){
+    logger.error('Unhandled rejection',{reason: reason, promise: promise});
+});
+process.on('uncaughtException', function(error){
+    logger.error('Uncaught Exception', {message: error.message});
+});
 
 // finally start the server
 app.listen(app.get("port"), () => {
