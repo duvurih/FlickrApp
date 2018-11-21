@@ -1,0 +1,25 @@
+<mat-card class="cardstyle" [style.overflow]="'auto'">
+  <mat-card-header>
+    <mat-card-title>
+      <b  class="smallonmobile">{{ item.author }}</b>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="media">
+      <img
+        mat-card-image
+        class="mr-3"
+        style="cursor:pointer;"
+        [src]="item.media.m"
+        alt="Generic placeholder image"
+        style="height:100px;width:100px;"
+      />
+      <div class="media-body">
+        <a href="{{item.link}}" target="_new">Click to View {{ item.published | date: "dd-MM-yyyy" }}</a>
+        <h5 class="mt-0">{{ item.tags }}</h5>
+        <div class="hideOnMobile" *ngIf="showDescription==false">{{ item.title }}</div>
+        <div *ngIf="showDescription==true">{{ item.title }}</div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -18,9 +18,22 @@ module.exports = {
   },
 
   getFlickrImage: async (req, res, next) => {
-    const { name } = req.params;
-    const images = await axios.get("${flickrApi}");
-    const image = images.find(item => item.name == name)[0];
-    res.status(200).json(image);
+    // const { name } = req.params;
+    // console.log(req.params);
+    // var url = flickrApi + "&tags=" + req.params.name;
+    // console.log(url);
+    // const images = await axios.get("${url}");
+    // console.log(images.data);
+    // res.status(200).json(images.data);
+
+    var url = flickrApi + "&tags=" + req.params.name;
+    console.log(url);
+    axios.get(`${url}`).then(images => {
+        console.log(images.data.items[0]);
+        res.status(200).json(images.data);
+    })
+    .catch((error)=>{
+        res.status(500).send(error);
+    })    
   }
 };

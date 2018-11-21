@@ -1,0 +1,37 @@
+<h1 class="mat-h1">Flickr Images Dashboard</h1>
+Select
+<mat-slide-toggle [(ngModel)]="viewGrid" [ngModelOptions]="{standalone: true}">
+  <span *ngIf="!viewGrid" >List View</span>
+  <span *ngIf="viewGrid" >Card View</span>
+</mat-slide-toggle>
+<div class="row shortRow"></div>
+<div class="row">
+  <div class="col-sm-3">
+      Search*
+  </div>
+  <div class="col-sm-6">
+    <div class="input-group mb-6">
+      <input type="text" class="form-control" [(ngModel)]="searchTag" [ngModelOptions]="{standalone: true}" />
+      <button class="btn btn-primary" (click)="retrieveImages(searchTag)">Search</button>
+    </div>
+  </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div *ngIf="viewGrid">
+  <cdk-virtual-scroll-viewport itemSize="100">
+    <li *cdkVirtualFor="let item of flickerItems$ | async" class="animated lightSpeedIn">
+        <app-flickr-item [item]="item" [showDescription]="showDescription"></app-flickr-item>
+    </li>
+  </cdk-virtual-scroll-viewport>
+  <!-- <li *ngFor="let item of flickerItems$ | async" class="animated lightSpeedIn">
+      <app-flickr-item [item]="item"></app-flickr-item>
+  </li> -->
+</div>
+<div *ngIf="!viewGrid">
+  <mat-grid-list [cols]="dynamicCols" rowHeight="2:1" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let item of flickerItems$ | async" class="gridstyle">
+      <app-flickr-item [item]="item"  [showDescription]="!showDescription" style="height:100%; width:100%;" ></app-flickr-item>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
