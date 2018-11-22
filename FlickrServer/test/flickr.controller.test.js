@@ -1,7 +1,7 @@
 /**
  * Writing a unit test for flickr service
  */
-const assert = require('assert');
+const assert = require('chai').assert;
 const except = require("chai").except;
 const should = require('chai').should();
 
