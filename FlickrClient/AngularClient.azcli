@@ -1,0 +1,22 @@
+az
+li
+
+# to build the image and publish
+docker build -t angular-docker-image .
+docker run -i -t -v ${pwd}:/usr/src/client -p 4200:4200 angular-docker-image
+docker run -i -t -p 8080:80 angular-docker-image
+docker stop angular-docker-image
+
+# show the images
+docker images
+docker ps
+
+# browse to it and debug it
+open http://localhost:4200
+
+# docker-compose up -d --build
+# docker-compose -f docker-compose.yml up -d --build
+
+# build and push the production  docker image to the Azure CR
+# docker-compose up -d --build
+
