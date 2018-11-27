@@ -4,6 +4,7 @@ li
 # to build the image and publish
 docker build -t angular-docker-image .
 docker run -i -t -v ${pwd}:/usr/src/client -p 4200:4200 angular-docker-image
+docker run -i -t -v ${pwd}:/usr/share/nginx/html/ -p 4200:80 angular-docker-image
 docker run -i -t -p 4200:80 angular-docker-image
 docker stop angular-docker-image
 
